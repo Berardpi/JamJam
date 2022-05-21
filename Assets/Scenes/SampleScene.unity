@@ -214,25 +214,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2767797463617808451, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3636373092089908521, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3636373092089908525, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
-      propertyPath: m_Size.x
-      value: 1.508387
-      objectReference: {fileID: 0}
-    - target: {fileID: 3636373092089908525, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
-      propertyPath: m_Size.y
-      value: 1.761487
-      objectReference: {fileID: 0}
-    - target: {fileID: 3636373092089908525, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.11494249
-      objectReference: {fileID: 0}
-    - target: {fileID: 3636373092089908525, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.1280289
       objectReference: {fileID: 0}
     - target: {fileID: 3636373092089908526, guid: b2eca0088a73bd840bf4afec25de8dfc, type: 3}
       propertyPath: m_RootOrder
