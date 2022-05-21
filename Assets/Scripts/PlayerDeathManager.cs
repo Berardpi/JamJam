@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class PlayerDeathManager : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class PlayerDeathManager : MonoBehaviour
     Rigidbody2D myRigidbody;
     PowerUpManager powerUpManager;
     HealthManager healthManager;
+    GameManager gameManager;
 
     bool isAlive = true;
 
@@ -27,6 +27,7 @@ public class PlayerDeathManager : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         powerUpManager = FindObjectOfType<PowerUpManager>();
         healthManager = FindObjectOfType<HealthManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,13 +56,12 @@ public class PlayerDeathManager : MonoBehaviour
         {
             healthManager.LoseHealth();
             HandlePowerUp(dangerObject);
+            gameManager.ResetLevel();
         }
         else
         {
-            healthManager.ResetHealth();
-            powerUpManager.Reset();
+            gameManager.HardResetLevel();
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void TriggerAnimation()
