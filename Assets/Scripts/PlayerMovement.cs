@@ -4,26 +4,34 @@ using static PowerUpManager;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     public float moveSpeed = 10;
 
     [SerializeField]
-    private float runFasterMoveSpeedDelta;
+    float runFasterMoveSpeedDelta;
     public float jumpSpeed = 20;
     public int maxJump = 2;
 
     [SerializeField]
-    private float blinkDistance;
+    float blinkDistance;
+    Vector2 inputVect = Vector2.zero;
+    int nbJump = 0;
+
+    [Header("Components")]
     public Rigidbody2D body;
     public BoxCollider2D feetCollider;
     public SpriteRenderer sprite;
     public Animator animator;
+
+    [Header("Managers")]
     PlayerDeathManager deathManager;
+    PowerUpManager powerUpManager;
 
-    private Vector2 inputVect = Vector2.zero;
-    private int nbJump = 0;
-    private PowerUpManager powerUpManager;
+    [Header("Particules")]
+    [SerializeField]
+    ParticleSystem jumpDust;
 
-    private void Awake()
+    void Awake()
     {
         deathManager = GetComponent<PlayerDeathManager>();
         powerUpManager = FindObjectOfType<PowerUpManager>();
@@ -54,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
             else if (nbJump < maxJump && powerUpManager.IsPowerUpActive(PowerUp.DoubleJump))
             {
                 nbJump++;
+                jumpDust.Play();
             }
             else
             {
