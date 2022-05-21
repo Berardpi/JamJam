@@ -39,18 +39,29 @@ public class PlayerDeathManager : MonoBehaviour
 
     void Die(GameObject dangerObject)
     {
-        isAlive = false;
-        TriggerAnimation();
-        HandlePowerUp(dangerObject);
-        StartCoroutine(ResetLevel());
+        if (isAlive)
+        {
+            isAlive = false;
+            TriggerAnimation();
+            StartCoroutine(HandleDeath(dangerObject));
+        }
     }
 
-    IEnumerator ResetLevel()
+    IEnumerator HandleDeath(GameObject dangerObject)
     {
         yield return new WaitForSecondsRealtime(waitTimeBeforeReset);
 
+        if (healthManager.getCurrentHealth() > 1)
+        {
+            healthManager.LoseHealth();
+            HandlePowerUp(dangerObject);
+        }
+        else
+        {
+            healthManager.ResetHealth();
+            powerUpManager.Reset();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        healthManager.LoseHealth();
     }
 
     void TriggerAnimation()

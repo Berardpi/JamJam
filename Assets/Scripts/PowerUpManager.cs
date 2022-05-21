@@ -22,12 +22,7 @@ public class PowerUpManager : MonoBehaviour
 
     private void Start()
     {
-        powerUps = new Dictionary<PowerUp, bool>();
-
-        foreach (PowerUp powerup in Enum.GetValues(typeof(PowerUp)))
-        {
-            powerUps.Add(powerup, false);
-        }
+        Reset();
     }
 
     public bool IsPowerUpActive(PowerUp powerUp)
@@ -38,6 +33,15 @@ public class PowerUpManager : MonoBehaviour
     public void ActivatePowerUp(PowerUp powerUp)
     {
         powerUps[powerUp] = true;
+    }
+
+    public void Reset()
+    {
+        powerUps = new Dictionary<PowerUp, bool>();
+        foreach (PowerUp powerup in Enum.GetValues(typeof(PowerUp)))
+        {
+            powerUps.Add(powerup, false);
+        }
     }
 
     private void ManageSingleton()
