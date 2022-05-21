@@ -3,15 +3,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float moveSpeed = 10;
+    public float jumpSpeed = 20;
+    public int maxJump = 2;
     public Rigidbody2D body;
     public BoxCollider2D feetCollider;
     public SpriteRenderer sprite;
-    public float moveSpeed = 10;
-    public float jumpSpeed = 20;
     public Animator animator;
     PlayerDeathManager deathManager;
 
     private Vector2 inputVect = Vector2.zero;
+    private int nbJump = 0;
 
     private void Awake()
     {
@@ -36,9 +38,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            body.velocity = new Vector2(body.velocity.x, jumpSpeed);
-            animator.SetTrigger("jump");
+            nbJump = 1;
         }
+        else if (nbJump < maxJump)
+        {
+            nbJump++;
+        }
+        else
+        {
+            return;
+        }
+        body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        animator.SetTrigger("jump");
     }
 
     void UpdateAnimations()

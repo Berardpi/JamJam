@@ -190,11 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52a54e5802cb694594975e83fb1696d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 7
+  jumpSpeed: 7
+  maxJump: 2
   body: {fileID: 3636373092089908524}
   feetCollider: {fileID: 8121727460824810151}
   sprite: {fileID: 3636373092089908527}
-  moveSpeed: 7
-  jumpSpeed: 8
   animator: {fileID: 3636373092089908520}
 --- !u!114 &6781604947292655411
 MonoBehaviour:
@@ -208,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232651ff2165941169a7fb832b7e5a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTimeBeforeReset: 1.2
+  waitTimeBeforeReset: 1
 --- !u!61 &8121727460824810151
 BoxCollider2D:
   m_ObjectHideFlags: 0

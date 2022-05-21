@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Trap
   - Ground
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -50,7 +50,7 @@ TagManager:
     uniqueID: 3683559265
     locked: 0
   - name: Trap
-    uniqueID: 564971885
+    uniqueID: 324360227
     locked: 0
   - name: Player
     uniqueID: 844624785
