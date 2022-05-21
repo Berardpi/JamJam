@@ -192,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6776302449062583381}
   - component: {fileID: 8381390896323027287}
+  - component: {fileID: 953463205}
   m_Layer: 5
   m_Name: PowerUpUI
   m_TagString: Untagged
@@ -248,6 +249,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &953463205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726125914532600209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65597edb28811c64993b130737ebae7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabBlink: {fileID: 7334389096494905154, guid: 7afda9250ee26fc4bb7ee192a8072693, type: 3}
+  prefabDoubleJump: {fileID: 8402942523843667336, guid: 40b13ef9622107540b71d5e5b9c6cf28, type: 3}
+  prefabSpeed: {fileID: 2269656772397733276, guid: 94f9b671ab4417245a9f31fdf946ca4d, type: 3}
 --- !u!1001 &970817458130255767
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -33,6 +33,8 @@ public class PowerUpManager : MonoBehaviour
     public void ActivatePowerUp(PowerUp powerUp)
     {
         powerUps[powerUp] = true;
+        UiPowerUpManager UiManager = FindObjectOfType<UiPowerUpManager>();
+        UiManager.Refresh();
     }
 
     public void Reset()
@@ -42,6 +44,8 @@ public class PowerUpManager : MonoBehaviour
         {
             powerUps.Add(powerup, false);
         }
+        UiPowerUpManager UiManager = FindObjectOfType<UiPowerUpManager>();
+        UiManager.Refresh();
     }
 
     private void ManageSingleton()
