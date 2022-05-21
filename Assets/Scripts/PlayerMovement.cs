@@ -8,14 +8,22 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 10;
     public float jumpSpeed = 20;
     public Animator animator;
+    PlayerDeathManager deathManager;
 
     private Vector2 inputVect = Vector2.zero;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        deathManager = GetComponent<PlayerDeathManager>();
+    }
+
     void Update()
     {
-        body.velocity = new Vector2(inputVect.x * moveSpeed, body.velocity.y);
-        UpdateAnimations();
+        if (deathManager.getIsAlive())
+        {
+            body.velocity = new Vector2(inputVect.x * moveSpeed, body.velocity.y);
+            UpdateAnimations();
+        }
     }
 
     void OnMove(InputValue value)
