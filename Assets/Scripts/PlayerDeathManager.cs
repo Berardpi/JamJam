@@ -12,6 +12,7 @@ public class PlayerDeathManager : MonoBehaviour
     Animator animator;
     Rigidbody2D myRigidbody;
     PowerUpManager powerUpManager;
+    HealthManager healthManager;
 
     bool isAlive = true;
 
@@ -25,6 +26,7 @@ public class PlayerDeathManager : MonoBehaviour
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         powerUpManager = FindObjectOfType<PowerUpManager>();
+        healthManager = FindObjectOfType<HealthManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,6 +50,7 @@ public class PlayerDeathManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(waitTimeBeforeReset);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        healthManager.LoseHealth();
     }
 
     void TriggerAnimation()
