@@ -5,7 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D body;
     public SpriteRenderer sprite;
-    public float moveSpeed;
+    public float moveSpeed = 10;
+    public float jumpSpeed = 20;
     public Animator animator;
 
     private Vector2 inputVect = Vector2.zero;
@@ -20,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         inputVect = value.Get<Vector2>();
+    }
+
+    void OnJump(InputValue value)
+    {
+        body.velocity = new Vector2(body.velocity.x, jumpSpeed);
     }
 
     void UpdateAnimations()

@@ -188,5 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52a54e5802cb694594975e83fb1696d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 3636373092089908524}
-  moveSpeed: 20
+  body: {fileID: 3636373092089908524}
+  sprite: {fileID: 3636373092089908527}
+  moveSpeed: 7
+  jumpSpeed: 8
+  animator: {fileID: 3636373092089908520}
