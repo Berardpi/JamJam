@@ -5,6 +5,9 @@ using static PowerUpManager;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10;
+
+    [SerializeField]
+    private float runFasterMoveSpeedDelta;
     public float jumpSpeed = 20;
     public int maxJump = 2;
     public Rigidbody2D body;
@@ -27,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (deathManager.getIsAlive())
         {
-            body.velocity = new Vector2(inputVect.x * moveSpeed, body.velocity.y);
+            Run();
             UpdateAnimations();
         }
     }
@@ -53,6 +56,17 @@ public class PlayerMovement : MonoBehaviour
         }
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         animator.SetTrigger("jump");
+    }
+
+    void Run()
+    {
+        float currentMoveSpeed = moveSpeed;
+        if (powerUpManager.IsPowerUpActive(PowerUp.RunFaster))
+        {
+            currentMoveSpeed += runFasterMoveSpeedDelta;
+        }
+
+        body.velocity = new Vector2(inputVect.x * currentMoveSpeed, body.velocity.y);
     }
 
     void UpdateAnimations()

@@ -8,7 +8,7 @@ public class PowerUpManager : MonoBehaviour
     public enum PowerUp
     {
         DoubleJump,
-        Faster
+        RunFaster
     };
 
     Dictionary<PowerUp, bool> powerUps;
