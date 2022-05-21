@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     ParticleSystem jumpDust;
 
+    [SerializeField]
+    ParticleSystem speedDust;
+
     void Awake()
     {
         deathManager = GetComponent<PlayerDeathManager>();
@@ -110,11 +113,19 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("verticalSpeed", body.velocity.y);
         if (body.velocity.x > 0)
         {
-            sprite.flipX = false;
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
         else if (body.velocity.x < 0)
         {
-            sprite.flipX = true;
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        if (Mathf.Abs(body.velocity.x) > moveSpeed && speedDust.isStopped)
+        {
+            speedDust.Play();
+        }
+        else if (Mathf.Abs(body.velocity.x) < 0.1 && speedDust.isPlaying)
+        {
+            speedDust.Stop();
         }
     }
 }
