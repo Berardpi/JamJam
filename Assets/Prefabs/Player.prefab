@@ -194,6 +194,7 @@ MonoBehaviour:
   runFasterMoveSpeedDelta: 4
   jumpSpeed: 23
   maxJump: 2
+  blinkDistance: 5
   body: {fileID: 3636373092089908524}
   feetCollider: {fileID: 8121727460824810151}
   sprite: {fileID: 3636373092089908527}
