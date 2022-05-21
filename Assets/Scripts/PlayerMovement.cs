@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static PowerUpManager;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 inputVect = Vector2.zero;
     private int nbJump = 0;
+    private PowerUpManager powerUpManager;
 
     private void Awake()
     {
         deathManager = GetComponent<PlayerDeathManager>();
+        powerUpManager = FindObjectOfType<PowerUpManager>();
     }
 
     void Update()
@@ -40,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         {
             nbJump = 1;
         }
-        else if (nbJump < maxJump)
+        else if (nbJump < maxJump && powerUpManager.IsPowerUpActive(PowerUp.DoubleJump))
         {
             nbJump++;
         }
