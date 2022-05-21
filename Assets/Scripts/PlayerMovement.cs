@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D body;
+    public BoxCollider2D feetCollider;
     public SpriteRenderer sprite;
     public float moveSpeed = 10;
     public float jumpSpeed = 20;
@@ -33,12 +34,17 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+            animator.SetTrigger("jump");
+        }
     }
 
     void UpdateAnimations()
     {
         animator.SetFloat("speed", Mathf.Abs(body.velocity.x));
+        animator.SetFloat("verticalSpeed", body.velocity.y);
         if (body.velocity.x > 0)
         {
             sprite.flipX = false;
