@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  runFasterMoveSpeedDelta: 4
+  runFasterMoveSpeedDelta: 5
   jumpSpeed: 23
   maxJump: 2
   blinkDistance: 5

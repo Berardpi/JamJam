@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7032912654534443689, guid: 9e082add038f847db9f5c13692fc5a18, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1603103843, guid: 65921b87bff9447bf937b734bc7833e0, type: 3}
     - target: {fileID: 7032912654534443690, guid: 9e082add038f847db9f5c13692fc5a18, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032912654534443695, guid: 9e082add038f847db9f5c13692fc5a18, type: 3}
       propertyPath: m_Name
-      value: Retracting Spikes Variant
+      value: Retracting Spikes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e082add038f847db9f5c13692fc5a18, type: 3}
@@ -82,3 +86,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8227367291778252671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825388687863098791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f07d41344744a71bafcf848ff2ce33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationStartDelay: 0
