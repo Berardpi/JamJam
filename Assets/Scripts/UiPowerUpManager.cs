@@ -21,14 +21,15 @@ public class UiPowerUpManager : MonoBehaviour
     void Awake()
     {
         powerUpManager = FindObjectOfType<PowerUpManager>();
-    }
 
-    void Start()
-    {
         prefabs = new Dictionary<PowerUp, GameObject>();
         prefabs.Add(PowerUp.DoubleJump, prefabDoubleJump);
         prefabs.Add(PowerUp.Blink, prefabBlink);
         prefabs.Add(PowerUp.RunFaster, prefabSpeed);
+    }
+
+    void Start()
+    {
         Refresh();
     }
 

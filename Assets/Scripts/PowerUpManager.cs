@@ -22,7 +22,7 @@ public class PowerUpManager : MonoBehaviour
 
     private void Start()
     {
-        Reset();
+        RefreshUI();
     }
 
     public bool IsPowerUpActive(PowerUp powerUp)
@@ -34,18 +34,26 @@ public class PowerUpManager : MonoBehaviour
     {
         powerUps[powerUp] = true;
         UiPowerUpManager UiManager = FindObjectOfType<UiPowerUpManager>();
-        UiManager.Refresh();
     }
 
     public void Reset()
+    {
+        InitializePowerUps();
+    }
+
+    private void RefreshUI()
+    {
+        UiPowerUpManager UiManager = FindObjectOfType<UiPowerUpManager>();
+        UiManager.Refresh();
+    }
+
+    private void InitializePowerUps()
     {
         powerUps = new Dictionary<PowerUp, bool>();
         foreach (PowerUp powerup in Enum.GetValues(typeof(PowerUp)))
         {
             powerUps.Add(powerup, false);
         }
-        UiPowerUpManager UiManager = FindObjectOfType<UiPowerUpManager>();
-        UiManager.Refresh();
     }
 
     private void ManageSingleton()
@@ -59,6 +67,8 @@ public class PowerUpManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            InitializePowerUps();
         }
     }
 }
