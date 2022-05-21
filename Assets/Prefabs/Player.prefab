@@ -197,7 +197,13 @@ MonoBehaviour:
   jumpSpeed: 8
   animator: {fileID: 3636373092089908520}
 --- !u!114 &6781604947292655411
-MonoBehaviour:  
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636373092089908521}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 232651ff2165941169a7fb832b7e5a4b, type: 3}
   m_Name: 
@@ -205,6 +211,12 @@ MonoBehaviour:
   waitTimeBeforeReset: 1.2
 --- !u!61 &8121727460824810151
 BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636373092089908521}
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -223,9 +235,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.80815506, y: 0.1748581}
   m_EdgeRadius: 0
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3636373092089908521}
-  m_Enabled: 1

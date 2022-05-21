@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7032912654534443689}
   - component: {fileID: 7032912654534443688}
   - component: {fileID: 7032912654534443691}
+  - component: {fileID: 123500129196925868}
   m_Layer: 0
   m_Name: Retracting Spikes
   m_TagString: Trap
@@ -132,3 +133,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.22440338}
   m_EdgeRadius: 0
+--- !u!114 &123500129196925868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032912654534443695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b8c2b0a6c5f4151b2c6f66dc18182c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gainedPowerUp: 0

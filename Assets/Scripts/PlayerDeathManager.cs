@@ -11,6 +11,7 @@ public class PlayerDeathManager : MonoBehaviour
 
     Animator animator;
     Rigidbody2D myRigidbody;
+    PowerUpManager powerUpManager;
 
     bool isAlive = true;
 
@@ -23,20 +24,22 @@ public class PlayerDeathManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        powerUpManager = FindObjectOfType<PowerUpManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Trap")
         {
-            Die();
+            Die(other.gameObject);
         }
     }
 
-    void Die()
+    void Die(GameObject dangerObject)
     {
         isAlive = false;
         TriggerAnimation();
+        HandlePowerUp(dangerObject);
         StartCoroutine(ResetLevel());
     }
 
@@ -51,5 +54,15 @@ public class PlayerDeathManager : MonoBehaviour
     {
         myRigidbody.bodyType = RigidbodyType2D.Static;
         animator.SetBool("isDead", true);
+    }
+
+    void HandlePowerUp(GameObject dangerObject)
+    {
+        Danger danger = dangerObject.GetComponent<Danger>();
+
+        if (danger != null)
+        {
+            powerUpManager.ActivatePowerUp(danger.GetGainedPowerUp());
+        }
     }
 }
