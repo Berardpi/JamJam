@@ -32,7 +32,10 @@ public class MainMenu : MonoBehaviour
         ToggleSelectLevel(false);
     }
 
-    public void onExit() { }
+    public void onExit()
+    {
+        Application.Quit();
+    }
 
     private void ToggleSelectLevel(bool show)
     {
