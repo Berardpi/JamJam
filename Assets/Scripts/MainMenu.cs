@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    RectTransform buttonsContainer;
+
+    [SerializeField]
+    RectTransform selectLevelContainer;
+
     GameManager gameManager;
 
     private void Awake()
@@ -16,7 +22,21 @@ public class MainMenu : MonoBehaviour
         gameManager.LoadNextLevel();
     }
 
-    public void onSelectLevel() { }
+    public void onSelectLevel()
+    {
+        ToggleSelectLevel(true);
+    }
+
+    public void onSelectLevelBack()
+    {
+        ToggleSelectLevel(false);
+    }
 
     public void onExit() { }
+
+    private void ToggleSelectLevel(bool show)
+    {
+        buttonsContainer.gameObject.SetActive(!show);
+        selectLevelContainer.gameObject.SetActive(show);
+    }
 }

@@ -32,6 +32,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadLevel(int levelIdx)
+    {
+        if (!isLoadingLevel)
+        {
+            isLoadingLevel = true;
+            LoadScene(levelIdx);
+        }
+    }
+
     private void LoadScene(int sceneIdx)
     {
         // SceneManager.LoadScene(sceneIdx);
@@ -45,6 +54,11 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public int GetNumberOfLevels()
+    {
+        return SceneManager.sceneCountInBuildSettings - 1;
     }
 
     private void SoftResetLevel()
