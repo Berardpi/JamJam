@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Managers")]
     PlayerDeathManager deathManager;
+    SoundEffectManager soundEffectManager;
 
     [Header("Particules")]
     [SerializeField]
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         deathManager = GetComponent<PlayerDeathManager>();
+        soundEffectManager = FindObjectOfType<SoundEffectManager>();
     }
 
     void Update()
@@ -154,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
             );
             blinkDustStart.Play();
             blinkDustEnd.Play();
+            soundEffectManager.PlayBlinkEffect();
         }
     }
 
