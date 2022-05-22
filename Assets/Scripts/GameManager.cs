@@ -13,7 +13,13 @@ public class GameManager : MonoBehaviour
         if (!isLoadingLevel)
         {
             isLoadingLevel = true;
-            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (nextIndex + 1 > SceneManager.sceneCountInBuildSettings)
+            {
+                nextIndex = 0;
+            }
+            LoadScene(nextIndex);
         }
     }
 
