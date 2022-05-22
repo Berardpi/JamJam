@@ -7,21 +7,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool isLoadingLevel = false;
-    PowerUpManager powerUpManager;
-    HealthManager healthManager;
-
-    private void Awake()
-    {
-        powerUpManager = FindObjectOfType<PowerUpManager>();
-        healthManager = FindObjectOfType<HealthManager>();
-    }
 
     public void LoadNextLevel()
     {
         if (!isLoadingLevel)
         {
             isLoadingLevel = true;
-            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (nextIndex + 1 > SceneManager.sceneCountInBuildSettings)
+            {
+                nextIndex = 0;
+            }
+            LoadScene(nextIndex);
         }
     }
 
@@ -36,12 +34,12 @@ public class GameManager : MonoBehaviour
 
     private void LoadScene(int sceneIdx)
     {
-        Destroy(healthManager.gameObject);
-        Destroy(powerUpManager.gameObject);
-        SceneManager.LoadScene(sceneIdx);
-        healthManager = FindObjectOfType<HealthManager>();
-        powerUpManager = FindObjectOfType<PowerUpManager>();
-        SoftResetLevel();
+        // SceneManager.LoadScene(sceneIdx);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIdx);
+        asyncOperation.completed += (asyncOperation) =>
+        {
+            SoftResetLevel();
+        };
     }
 
     public void ResetLevel()
@@ -51,8 +49,9 @@ public class GameManager : MonoBehaviour
 
     private void SoftResetLevel()
     {
-        healthManager.ResetHealth();
-        powerUpManager.Reset();
+        HealthManager.Instance?.ResetHealth();
+        PowerUpManager.Instance?.Reset();
+        AudioManager.Instance?.Reset();
     }
 
     public void HardResetLevel()

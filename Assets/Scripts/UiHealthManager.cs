@@ -7,16 +7,10 @@ public class UiHealthManager : MonoBehaviour
 
     [SerializeField]
     GameObject prefabHeartEmpty;
-    HealthManager healthManager;
-
-    private void Awake()
-    {
-        healthManager = FindObjectOfType<HealthManager>();
-    }
 
     private void Start()
     {
-        Refresh(healthManager.getCurrentHealth(), healthManager.getMaxHealth());
+        Refresh(HealthManager.Instance.getCurrentHealth(), HealthManager.Instance.getMaxHealth());
     }
 
     public void Refresh(int currentHealth, int maxHealth)

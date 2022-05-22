@@ -14,6 +14,10 @@ public class PowerUpManager : MonoBehaviour
 
     Dictionary<PowerUp, bool> powerUps;
     private static PowerUpManager instance;
+    public static PowerUpManager Instance
+    {
+        get { return instance; }
+    }
 
     private void Awake()
     {
@@ -44,7 +48,7 @@ public class PowerUpManager : MonoBehaviour
     private void RefreshUI()
     {
         UiPowerUpManager UiManager = FindObjectOfType<UiPowerUpManager>();
-        UiManager.Refresh();
+        UiManager?.Refresh();
     }
 
     private void InitializePowerUps()
@@ -58,17 +62,24 @@ public class PowerUpManager : MonoBehaviour
 
     private void ManageSingleton()
     {
-        if (instance != null)
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializePowerUps();
+        }
+        else if (instance != this)
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+    }
 
-            InitializePowerUps();
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
         }
     }
 }

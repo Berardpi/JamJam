@@ -10,8 +10,6 @@ public class PlayerDeathManager : MonoBehaviour
 
     Animator animator;
     Rigidbody2D myRigidbody;
-    PowerUpManager powerUpManager;
-    HealthManager healthManager;
     GameManager gameManager;
 
     bool isAlive = true;
@@ -25,8 +23,6 @@ public class PlayerDeathManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        powerUpManager = FindObjectOfType<PowerUpManager>();
-        healthManager = FindObjectOfType<HealthManager>();
         gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -52,9 +48,9 @@ public class PlayerDeathManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(waitTimeBeforeReset);
 
-        if (healthManager.getCurrentHealth() > 1)
+        if (HealthManager.Instance.getCurrentHealth() > 1)
         {
-            healthManager.LoseHealth();
+            HealthManager.Instance.LoseHealth();
             HandlePowerUp(dangerObject);
             gameManager.ResetLevel();
         }
@@ -76,7 +72,7 @@ public class PlayerDeathManager : MonoBehaviour
 
         if (danger != null)
         {
-            powerUpManager.ActivatePowerUp(danger.GetGainedPowerUp());
+            PowerUpManager.Instance.ActivatePowerUp(danger.GetGainedPowerUp());
         }
     }
 }

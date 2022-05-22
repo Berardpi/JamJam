@@ -16,12 +16,8 @@ public class UiPowerUpManager : MonoBehaviour
 
     Dictionary<PowerUp, GameObject> prefabs;
 
-    PowerUpManager powerUpManager;
-
     void Awake()
     {
-        powerUpManager = FindObjectOfType<PowerUpManager>();
-
         prefabs = new Dictionary<PowerUp, GameObject>();
         prefabs.Add(PowerUp.DoubleJump, prefabDoubleJump);
         prefabs.Add(PowerUp.Blink, prefabBlink);
@@ -42,7 +38,7 @@ public class UiPowerUpManager : MonoBehaviour
 
         foreach (PowerUp powerUp in Enum.GetValues(typeof(PowerUp)))
         {
-            if (powerUpManager.IsPowerUpActive(powerUp))
+            if (PowerUpManager.Instance.IsPowerUpActive(powerUp))
             {
                 Instantiate(prefabs[powerUp], transform);
             }
