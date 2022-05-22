@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool isLoadingLevel = false;
+    UiManager uiManager;
+
+    private void Awake()
+    {
+        uiManager = FindObjectOfType<UiManager>();
+    }
 
     public void LoadNextLevel()
     {
@@ -44,8 +50,11 @@ public class GameManager : MonoBehaviour
     private void LoadScene(int sceneIdx)
     {
         // SceneManager.LoadScene(sceneIdx);
-        UiManager.Instance?.triggerFade();
-        UiManager.Instance?.setLevelText("Level " + sceneIdx);
+        if (uiManager)
+        {
+            uiManager.triggerFade();
+            uiManager.setLevelText(sceneIdx);
+        }
         StartCoroutine(LoadSceneCoroutine(sceneIdx));
     }
 

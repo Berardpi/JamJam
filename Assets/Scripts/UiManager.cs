@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UiManager : MonoBehaviour
@@ -12,15 +10,9 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI faderText;
 
-    private static UiManager instance;
-    public static UiManager Instance
+    void Awake()
     {
-        get { return instance; }
-    }
-
-    private void Awake()
-    {
-        ManageSingleton();
+        setLevelText(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void triggerFade()
@@ -28,30 +20,8 @@ public class UiManager : MonoBehaviour
         faderAnimator.SetTrigger("crossfade");
     }
 
-    public void setLevelText(string text)
+    public void setLevelText(int level = 1)
     {
-        faderText.text = text;
-    }
-
-    private void ManageSingleton()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
-        {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (instance == this)
-        {
-            instance = null;
-        }
+        faderText.text = "Level " + level;
     }
 }
