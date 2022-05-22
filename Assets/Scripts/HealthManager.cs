@@ -48,10 +48,10 @@ public class HealthManager : MonoBehaviour
 
     private void ResetMaxHealth()
     {
-        MaxHealth maxHealthObject = FindObjectOfType<MaxHealth>();
-        if (maxHealthObject != null)
+        LevelSettings levelSettings = FindObjectOfType<LevelSettings>();
+        if (levelSettings != null)
         {
-            maxHealth = maxHealthObject.maxHealth;
+            maxHealth = levelSettings.maxHealth;
         }
         else
         {

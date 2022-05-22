@@ -464,7 +464,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1211222071026188103, guid: 96a72d7aadda6489ea19072e95efe1fd, type: 3}
       propertyPath: m_Name
-      value: MaxHealth
+      value: LevelSettings
       objectReference: {fileID: 0}
     - target: {fileID: 3101920013535178970, guid: 96a72d7aadda6489ea19072e95efe1fd, type: 3}
       propertyPath: m_RootOrder
@@ -510,6 +510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4167770887554891568, guid: 96a72d7aadda6489ea19072e95efe1fd, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: fe989b153b8c641bc919133145cc0035, type: 3}
     - target: {fileID: 4167770887554891568, guid: 96a72d7aadda6489ea19072e95efe1fd, type: 3}
       propertyPath: maxHealth
       value: 3

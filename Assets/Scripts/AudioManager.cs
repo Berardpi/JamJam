@@ -10,9 +10,29 @@ public class AudioManager : MonoBehaviour
         get { return instance; }
     }
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         ManageSingleton();
+    }
+
+    private void Start()
+    {
+        Reset();
+    }
+
+    public void Reset()
+    {
+        LevelSettings levelSettings = FindObjectOfType<LevelSettings>();
+        if (levelSettings != null)
+        {
+            if (levelSettings.music != audioSource.clip)
+            {
+                audioSource.clip = levelSettings.music;
+                audioSource.Play();
+            }
+        }
     }
 
     private void ManageSingleton()
@@ -21,6 +41,7 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>();
         }
         else if (instance != this)
         {

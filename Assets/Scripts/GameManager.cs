@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         HealthManager.Instance?.ResetHealth();
         PowerUpManager.Instance?.Reset();
+        AudioManager.Instance?.Reset();
     }
 
     public void HardResetLevel()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3101920013535178970}
   - component: {fileID: 4167770887554891568}
   m_Layer: 0
-  m_Name: MaxHealth
+  m_Name: LevelSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
