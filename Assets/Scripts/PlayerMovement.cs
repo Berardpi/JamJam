@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Managers")]
     PlayerDeathManager deathManager;
-    PowerUpManager powerUpManager;
 
     [Header("Particules")]
     [SerializeField]
@@ -40,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         deathManager = GetComponent<PlayerDeathManager>();
-        powerUpManager = FindObjectOfType<PowerUpManager>();
     }
 
     void Update()
@@ -65,7 +63,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 nbJump = 1;
             }
-            else if (nbJump < maxJump && powerUpManager.IsPowerUpActive(PowerUp.DoubleJump))
+            else if (
+                nbJump < maxJump && PowerUpManager.Instance.IsPowerUpActive(PowerUp.DoubleJump)
+            )
             {
                 nbJump++;
                 jumpDust.Play();
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnUse(InputValue value)
     {
-        if (powerUpManager.IsPowerUpActive(PowerUp.Blink))
+        if (PowerUpManager.Instance.IsPowerUpActive(PowerUp.Blink))
         {
             Blink();
         }
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     void Run()
     {
         float currentMoveSpeed = moveSpeed;
-        if (powerUpManager.IsPowerUpActive(PowerUp.RunFaster))
+        if (PowerUpManager.Instance.IsPowerUpActive(PowerUp.RunFaster))
         {
             currentMoveSpeed += runFasterMoveSpeedDelta;
         }
@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         if (deathManager.getIsAlive())
         {
             float distance = blinkDistance;
-            if (powerUpManager.IsPowerUpActive(PowerUp.RunFaster))
+            if (PowerUpManager.Instance.IsPowerUpActive(PowerUp.RunFaster))
             {
                 distance += runFasterBlinkDistanceDelta;
             }
