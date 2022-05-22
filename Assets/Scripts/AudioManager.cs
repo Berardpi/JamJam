@@ -10,6 +10,14 @@ public class AudioManager : MonoBehaviour
         get { return instance; }
     }
 
+    [Header("Sound effects")]
+    [SerializeField]
+    AudioClip blinkClip;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    float blinkVolume = 0.5f;
+
     private AudioSource audioSource;
 
     private void Awake()
@@ -33,6 +41,12 @@ public class AudioManager : MonoBehaviour
                 audioSource.Play();
             }
         }
+    }
+
+    public void PlayBlinkEffect()
+    {
+        // Vector3 cameraPos = Camera.main.transform.position;
+        audioSource.PlayOneShot(blinkClip, blinkVolume);
     }
 
     private void ManageSingleton()

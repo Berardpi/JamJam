@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3533729948104362179}
   - component: {fileID: 3533729948104362178}
   - component: {fileID: 769811691651764865}
-  - component: {fileID: 6470072511780757271}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -140,18 +139,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93d9f44814c73476b8a5ce719a5f721d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6470072511780757271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3533729948104362177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68028d95fece34e05a41e99c40e45220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blinkClip: {fileID: 8300000, guid: 4270eeff7118c4424b85953ed4268998, type: 3}
