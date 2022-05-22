@@ -37,6 +37,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     ParticleSystem speedDust;
 
+    [SerializeField]
+    ParticleSystem blinkDustStart;
+
+    [SerializeField]
+    ParticleSystem blinkDustEnd;
+
     void Awake()
     {
         deathManager = GetComponent<PlayerDeathManager>();
@@ -141,6 +147,13 @@ public class PlayerMovement : MonoBehaviour
             }
 
             transform.position = destination;
+            blinkDustStart.transform.localPosition = new Vector3(
+                -distance,
+                blinkDustStart.transform.localPosition.y,
+                0f
+            );
+            blinkDustStart.Play();
+            blinkDustEnd.Play();
         }
     }
 
