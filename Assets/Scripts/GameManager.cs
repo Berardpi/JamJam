@@ -44,6 +44,15 @@ public class GameManager : MonoBehaviour
     private void LoadScene(int sceneIdx)
     {
         // SceneManager.LoadScene(sceneIdx);
+        UiManager.Instance?.triggerFade();
+        UiManager.Instance?.setLevelText("Level " + sceneIdx);
+        StartCoroutine(LoadSceneCoroutine(sceneIdx));
+    }
+
+    private IEnumerator LoadSceneCoroutine(int sceneIdx)
+    {
+        yield return new WaitForSeconds(1f);
+
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIdx);
         asyncOperation.completed += (asyncOperation) =>
         {
