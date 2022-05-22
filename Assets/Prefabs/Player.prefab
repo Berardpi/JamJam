@@ -9886,6 +9886,7 @@ MonoBehaviour:
   sprite: {fileID: 3636373092089908527}
   animator: {fileID: 3636373092089908520}
   jumpDust: {fileID: 1272754181}
+  speedDust: {fileID: 8491303093982103759}
 --- !u!114 &6781604947292655411
 MonoBehaviour:
   m_ObjectHideFlags: 0
