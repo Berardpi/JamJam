@@ -6,6 +6,11 @@ public class EndOfLevel : MonoBehaviour
 {
     GameManager gameManager;
 
+    [SerializeField]
+    Animator animator;
+
+    Animation anim;
+
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -15,7 +20,12 @@ public class EndOfLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.LoadNextLevel();
+            animator.SetTrigger("activate");
         }
+    }
+
+    void OnActivateAnimationEnd()
+    {
+        gameManager.LoadNextLevel();
     }
 }
