@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
 
     private void LoadScene(int sceneIdx)
     {
-        Destroy(healthManager);
-        Destroy(powerUpManager);
+        Destroy(healthManager.gameObject);
+        Destroy(powerUpManager.gameObject);
         SceneManager.LoadScene(sceneIdx);
         healthManager = FindObjectOfType<HealthManager>();
         powerUpManager = FindObjectOfType<PowerUpManager>();
