@@ -40,11 +40,11 @@ public class UiPowerUpManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (PowerUp powerup in Enum.GetValues(typeof(PowerUp)))
+        foreach (PowerUp powerUp in Enum.GetValues(typeof(PowerUp)))
         {
-            if (powerUpManager.IsPowerUpActive(powerup))
+            if (powerUpManager.IsPowerUpActive(powerUp))
             {
-                Instantiate(prefabs[powerup], transform);
+                Instantiate(prefabs[powerUp], transform);
             }
         }
     }

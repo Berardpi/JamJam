@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    bool isLoadingLevel = false;
     PowerUpManager powerUpManager;
     HealthManager healthManager;
 
@@ -15,15 +16,48 @@ public class GameManager : MonoBehaviour
         healthManager = FindObjectOfType<HealthManager>();
     }
 
+    public void LoadNextLevel()
+    {
+        if (!isLoadingLevel)
+        {
+            isLoadingLevel = true;
+            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        if (!isLoadingLevel)
+        {
+            isLoadingLevel = true;
+            LoadScene(SceneManager.GetSceneByName(levelName).buildIndex);
+        }
+    }
+
+    private void LoadScene(int sceneIdx)
+    {
+        Destroy(healthManager);
+        Destroy(powerUpManager);
+        SceneManager.LoadScene(sceneIdx);
+        healthManager = FindObjectOfType<HealthManager>();
+        powerUpManager = FindObjectOfType<PowerUpManager>();
+        SoftResetLevel();
+    }
+
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void HardResetLevel()
+    private void SoftResetLevel()
     {
         healthManager.ResetHealth();
         powerUpManager.Reset();
+    }
+
+    public void HardResetLevel()
+    {
+        SoftResetLevel();
         ResetLevel();
     }
 
