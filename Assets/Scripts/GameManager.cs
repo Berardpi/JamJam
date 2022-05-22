@@ -96,4 +96,12 @@ public class GameManager : MonoBehaviour
     {
         HardResetLevel();
     }
+
+    void OnExitLevel(InputValue value)
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            LoadScene(0);
+        }
+    }
 }
