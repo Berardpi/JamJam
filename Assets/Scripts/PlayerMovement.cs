@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     float blinkDistance;
+
+    [SerializeField]
+    float runFasterBlinkDistanceDelta;
     Vector2 inputVect = Vector2.zero;
     int nbJump = 0;
 
@@ -99,11 +102,45 @@ public class PlayerMovement : MonoBehaviour
     {
         if (deathManager.getIsAlive())
         {
-            int direction = body.velocity.x > 0 ? 1 : -1;
-            transform.position = new Vector2(
-                transform.position.x + (blinkDistance * direction),
+            float distance = blinkDistance;
+            if (powerUpManager.IsPowerUpActive(PowerUp.RunFaster))
+            {
+                distance += runFasterBlinkDistanceDelta;
+            }
+            float direction = transform.localScale.x;
+            Vector2 destination = new Vector2(
+                transform.position.x + (distance * direction),
                 transform.position.y
             );
+            // heightDelta is use to center raycast on player body
+            Vector2 heightDelta = new Vector2(0f, 1f);
+
+            if (
+                Physics2D.OverlapPoint(destination - heightDelta, LayerMask.GetMask("Ground"))
+                != null
+            )
+            {
+                RaycastHit2D hit = Physics2D.Linecast(
+                    (Vector2)transform.position - heightDelta,
+                    destination - heightDelta,
+                    LayerMask.GetMask("Ground")
+                );
+
+                if (hit)
+                {
+                    float xMargin = 0.3f;
+                    destination = new Vector2(
+                        hit.point.x - (xMargin * direction),
+                        transform.position.y
+                    );
+                }
+                else
+                {
+                    destination = transform.position;
+                }
+            }
+
+            transform.position = destination;
         }
     }
 
