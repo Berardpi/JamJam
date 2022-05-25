@@ -9,6 +9,11 @@ public class UISelectLevel : MonoBehaviour
     [SerializeField]
     GameObject levelButtonPrefab;
 
+    [SerializeField]
+    Animator menuAnimator;
+    [SerializeField]
+    TextMeshProUGUI faderText;
+
     GameManager gameManager;
 
     private void Awake()
@@ -48,6 +53,8 @@ public class UISelectLevel : MonoBehaviour
 
     private void LoadLevel(int index)
     {
+        faderText.text = "Level " + index;
+        menuAnimator.SetTrigger("fade");
         gameManager.LoadLevel(index);
     }
 }

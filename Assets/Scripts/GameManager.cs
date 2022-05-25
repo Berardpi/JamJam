@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     bool isLoadingLevel = false;
     UiManager uiManager;
+    int previousSceneIdx = 0;
 
     private void Awake()
     {
@@ -50,17 +51,25 @@ public class GameManager : MonoBehaviour
     private void LoadScene(int sceneIdx)
     {
         // SceneManager.LoadScene(sceneIdx);
+        previousSceneIdx = SceneManager.GetActiveScene().buildIndex;
         if (uiManager)
         {
+            if (sceneIdx == 0)
+            {
+                uiManager.setLevelText("");
+            }
+            else
+            {
+                uiManager.setLevelText(sceneIdx);
+            }
             uiManager.triggerFade();
-            uiManager.setLevelText(sceneIdx);
         }
         StartCoroutine(LoadSceneCoroutine(sceneIdx));
     }
 
     private IEnumerator LoadSceneCoroutine(int sceneIdx)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIdx);
         asyncOperation.completed += (asyncOperation) =>
@@ -103,5 +112,10 @@ public class GameManager : MonoBehaviour
         {
             LoadScene(0);
         }
+    }
+
+    public int GetPreviousSceneIdx()
+    {
+        return previousSceneIdx;
     }
 }

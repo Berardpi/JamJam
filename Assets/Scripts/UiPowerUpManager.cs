@@ -31,7 +31,6 @@ public class UiPowerUpManager : MonoBehaviour
 
     public void Refresh()
     {
-        Debug.Log("RefreshPowerUpUi");
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);

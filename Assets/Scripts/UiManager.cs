@@ -10,9 +10,15 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI faderText;
 
+
     void Awake()
     {
-        setLevelText(SceneManager.GetActiveScene().buildIndex);
+        if (HealthManager.Instance?.getMaxHealth() == HealthManager.Instance?.getCurrentHealth())
+            setLevelText(SceneManager.GetActiveScene().buildIndex);
+        else
+        {
+            setLevelText("");
+        }
     }
 
     public void triggerFade()
@@ -22,6 +28,15 @@ public class UiManager : MonoBehaviour
 
     public void setLevelText(int level = 1)
     {
+        if (level == 0)
+        {
+            faderText.text = "";
+        }
         faderText.text = "Level " + level;
+    }
+
+    public void setLevelText(string text)
+    {
+        faderText.text = text;
     }
 }

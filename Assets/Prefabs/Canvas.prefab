@@ -389,6 +389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6151267849071515359}
     m_Modifications:
+    - target: {fileID: 2629687258524994255, guid: b65239b362efaba44908feb7b49b8d7a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1000454768, guid: 7a2326d222a01bd49a2dc6b24d6ba7d3, type: 3}
     - target: {fileID: 4505109120677660833, guid: b65239b362efaba44908feb7b49b8d7a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -419,11 +423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505109120677660833, guid: b65239b362efaba44908feb7b49b8d7a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 72
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4505109120677660833, guid: b65239b362efaba44908feb7b49b8d7a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 68
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4505109120677660833, guid: b65239b362efaba44908feb7b49b8d7a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -847,11 +851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 292619688719934763, guid: a8723f75ee541404bbdf82e877f8d0cc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 72
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 292619688719934763, guid: a8723f75ee541404bbdf82e877f8d0cc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 68
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 292619688719934763, guid: a8723f75ee541404bbdf82e877f8d0cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -901,6 +905,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1290360832121221628, guid: a8723f75ee541404bbdf82e877f8d0cc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1960724736, guid: 7043e66af98882b4282c55871c9a92d1, type: 3}
     - target: {fileID: 6729961422551564378, guid: a8723f75ee541404bbdf82e877f8d0cc, type: 3}
       propertyPath: m_Name
       value: HealthEmpty
