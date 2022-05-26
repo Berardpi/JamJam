@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
 {
     bool isLoadingLevel = false;
     UiManager uiManager;
+    AudioManager audioManager;
     int previousSceneIdx = 0;
 
-    private void Awake()
+    private void Start()
     {
         uiManager = FindObjectOfType<UiManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void LoadNextLevel()
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         // SceneManager.LoadScene(sceneIdx);
         previousSceneIdx = SceneManager.GetActiveScene().buildIndex;
-        if (uiManager)
+        if (uiManager != null)
         {
             if (sceneIdx == 0)
             {
@@ -63,6 +65,10 @@ public class GameManager : MonoBehaviour
                 uiManager.setLevelText(sceneIdx);
             }
             uiManager.triggerFade();
+        }
+        if (audioManager != null)
+        {
+            audioManager.TriggerMusicFadeOut();
         }
         StartCoroutine(LoadSceneCoroutine(sceneIdx));
     }

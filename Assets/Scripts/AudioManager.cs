@@ -19,6 +19,9 @@ public class AudioManager : MonoBehaviour
     float blinkVolume = 0.5f;
 
     private AudioSource audioSource;
+    private bool inMusicFadeOut = false;
+    private bool inMusicFadeIn = false;
+    private float startVolume;
 
     private void Awake()
     {
@@ -28,6 +31,19 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Reset();
+    }
+
+    private void FixedUpdate()
+    {
+        if (inMusicFadeOut && audioSource.volume >= startVolume / 10)
+        {
+            audioSource.volume -= 0.01f;
+        }
+
+        if (inMusicFadeIn && audioSource.volume < startVolume)
+        {
+            audioSource.volume = Mathf.Min(audioSource.volume + 0.01f, startVolume);
+        }
     }
 
     public void Reset()
@@ -41,6 +57,14 @@ public class AudioManager : MonoBehaviour
                 audioSource.Play();
             }
         }
+        inMusicFadeOut = false;
+        inMusicFadeIn = true;
+    }
+
+    public void TriggerMusicFadeOut()
+    {
+        inMusicFadeIn = false;
+        inMusicFadeOut = true;
     }
 
     public void PlayBlinkEffect()
@@ -56,6 +80,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
+            startVolume = audioSource.volume;
         }
         else if (instance != this)
         {
