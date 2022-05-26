@@ -103,7 +103,10 @@ public class GameManager : MonoBehaviour
 
     void OnReset(InputValue value)
     {
-        HardResetLevel();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            HardResetLevel();
+        }
     }
 
     void OnExitLevel(InputValue value)
