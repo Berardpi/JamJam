@@ -19623,6 +19623,7 @@ MonoBehaviour:
   maxJump: 2
   blinkDistance: 3
   runFasterBlinkDistanceDelta: 2
+  timeBetweenBlinks: 0.4
   body: {fileID: 3636373092089908524}
   feetCollider: {fileID: 8121727460824810151}
   sprite: {fileID: 3636373092089908527}

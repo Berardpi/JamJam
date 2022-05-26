@@ -12,11 +12,16 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 20;
     public int maxJump = 2;
 
+    [Header("Blink")]
     [SerializeField]
     float blinkDistance;
 
     [SerializeField]
     float runFasterBlinkDistanceDelta;
+
+    [SerializeField]
+    float timeBetweenBlinks;
+    float betweenBlinkTimer = 0f;
     Vector2 inputVect = Vector2.zero;
     int nbJump = 0;
 
@@ -53,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Run();
             UpdateAnimations();
+            betweenBlinkTimer -= Time.deltaTime;
         }
     }
 
@@ -106,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Blink()
     {
-        if (deathManager.getIsAlive())
+        if (deathManager.getIsAlive() && betweenBlinkTimer <= 0)
         {
             float distance = blinkDistance;
             if (PowerUpManager.Instance.IsPowerUpActive(PowerUp.RunFaster))
@@ -155,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
             blinkDustStart.Play();
             blinkDustEnd.Play();
             AudioManager.Instance.PlayBlinkEffect();
+            betweenBlinkTimer = timeBetweenBlinks;
         }
     }
 
