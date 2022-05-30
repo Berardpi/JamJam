@@ -3379,7 +3379,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JamJam
+  m_text: 'DIE
+
+    AND CONTINUE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91565a9729c944e3fb6f5655ff32311e, type: 2}
   m_sharedMaterial: {fileID: -7810390601730651291, guid: 91565a9729c944e3fb6f5655ff32311e, type: 2}
